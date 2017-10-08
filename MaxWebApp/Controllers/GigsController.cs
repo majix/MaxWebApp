@@ -1,7 +1,6 @@
 ﻿using MaxWebApp.Models;
 using MaxWebApp.ViewModels;
 using Microsoft.AspNet.Identity;
-using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -18,7 +17,7 @@ namespace MaxWebApp.Controllers
             _context = new ApplicationDbContext();
         }
         [Authorize]
-        public ActionResult Create()
+        public ActionResult Create()    
         {
             var viewModel = new GigFormViewModel
             {
@@ -31,13 +30,12 @@ namespace MaxWebApp.Controllers
         [HttpPost]
         public ActionResult Create(GigFormViewModel viewModel)
         {
-            //var genre = _context.Genres.Single(g => g.Id == viewModel.Genre);
-
-            //var artist = _context.Users.Single(u => u.Id == userId);
+            viewModel.Genres = _context.Genres.ToList();
+            if (!ModelState.IsValid) return View("Create", viewModel);
             var gig = new Gig
             {
                 ArtistId = User.Identity.GetUserId(),
-                Datetime = viewModel.DateTime,
+                Datetime = viewModel.GetDateTime(),
                 GenreId = viewModel.Genre,
                 Venue = viewModel.Venue
             };
