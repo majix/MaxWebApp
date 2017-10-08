@@ -37,7 +37,7 @@ namespace MaxWebApp.Controllers
             var gig = new Gig
             {
                 ArtistId = User.Identity.GetUserId(),
-                Datetime = DateTime.Parse($"{viewModel.Date} {viewModel.Time}"),
+                Datetime = viewModel.DateTime,
                 GenreId = viewModel.Genre,
                 Venue = viewModel.Venue
             };
