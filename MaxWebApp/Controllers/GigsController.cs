@@ -17,7 +17,7 @@ namespace MaxWebApp.Controllers
             _context = new ApplicationDbContext();
         }
         [Authorize]
-        public ActionResult Create()    
+        public ActionResult Create()
         {
             var viewModel = new GigFormViewModel
             {
@@ -28,6 +28,7 @@ namespace MaxWebApp.Controllers
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(GigFormViewModel viewModel)
         {
             viewModel.Genres = _context.Genres.ToList();
