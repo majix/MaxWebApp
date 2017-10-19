@@ -1,12 +1,23 @@
-﻿using System.Web.Mvc;
+﻿using MaxWebApp.Models;
+using System;
+using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace MaxWebApp.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext _context;
+        public HomeController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var upcomingGigs = _context.Gigs.Include(g => g.Artist).Where(d => d.Datetime > DateTime.Now);
+            return View(upcomingGigs);
         }
 
         public ActionResult About()

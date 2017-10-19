@@ -8,12 +8,14 @@ namespace MaxWebApp.ViewModels
     {
         public override bool IsValid(object value)
         {
-            DateTime datetime;
+            DateTime dateTime;
             var isValid = DateTime.TryParseExact(Convert.ToString(value),
-                "d MMM YYYY",
+                "d MMM yyyy",
                 CultureInfo.CurrentCulture,
-                DateTimeStyles.None, out datetime);
-            return (isValid && datetime > DateTime.Now);
+                DateTimeStyles.None,
+                out dateTime);
+
+            return (isValid && dateTime > DateTime.Now);
         }
     }
 }
