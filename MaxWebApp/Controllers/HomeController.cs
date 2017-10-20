@@ -16,7 +16,7 @@ namespace MaxWebApp.Controllers
 
         public ActionResult Index()
         {
-            var upcomingGigs = _context.Gigs.Include(g => g.Artist).Where(d => d.Datetime > DateTime.Now);
+            var upcomingGigs = _context.Gigs.Include(g => g.Artist).Include(b => b.Genre).Where(d => d.Datetime > DateTime.Now);
             return View(upcomingGigs);
         }
 

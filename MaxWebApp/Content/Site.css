@@ -1,6 +1,7 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 90px;
     padding-bottom: 20px;
+    
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -65,3 +66,48 @@ body {
 .navbar-brand {
     font-weight: bold;
 }
+
+/*page level styles*/
+.gigs {
+    list-style: none;
+}
+.gigs > li {
+    position: relative;
+    margin-bottom: 30px;
+
+}
+.gigs > li .date {
+    width:60px;
+    text-align: center;
+    background: red;
+    color: white;
+    border-radius: 8px;
+    -ms-border-radius: 8px;
+
+}
+
+.gigs> li .date .month {
+    padding: 2px 6px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+
+}
+.gigs> li .date .day {
+    background: #F7F7F7;
+    color: #333;
+    padding: 6px 12px;
+    font-size: 20px;
+}
+.gigs > li .details {
+    position: absolute;
+    top: 0; 
+    left: 70px;
+}
+.gigs > li .details .artist {
+    font-weight: bold;
+    display: block;
+}
+.gigs > li .details .genre {
+    font-size: 15px;
+}  
