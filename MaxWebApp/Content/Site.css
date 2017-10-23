@@ -56,9 +56,9 @@ body {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
-.btn {
+/*.btn {
     padding: 15px 17px;
-}
+}*/
 .dropdown-menu {
     box-shadow: none;
     -webkit-box-shadow: none;
@@ -103,6 +103,7 @@ body {
     position: absolute;
     top: 0; 
     left: 70px;
+    width: 200px;
 }
 .gigs > li .details .artist {
     font-weight: bold;

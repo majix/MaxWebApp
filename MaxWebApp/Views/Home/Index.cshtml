@@ -12,10 +12,34 @@
                 <div class="day">@gig.Datetime.Day</div>
             </div>
             <div class="details">
-                <span class="artist">@gig.Artist.Name</span>
+                <span class="artist">@gig.Artist.Name</span><span><a href="#">Follow</a></span>
+               
                 <span class="genre">@gig.Genre.Name</span>
+                <button btn-data="@gig.Id" class="btn-default btn btn-sm pull-right js-toggle-attendance">Going?</button>
             </div>
         </li>
     }
 
 </ul>
+@section scripts
+{
+    <script>
+        //alert($(".js-toggle-attendance").attr("btn-data").val());
+        $(document).ready(function() {
+            $(".js-toggle-attendance").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/attendances", { gigId: button.attr("btn-data") })
+                    .done(function () {
+                        alert("done");
+                        button
+                            .removeClass("btn-dafault")
+                            .addClass("btn-info")
+                            .text("Going");
+                    })
+                    .fail(function() {
+                        alert("failed");
+                    });
+            });
+        });
+    </script>
+}
